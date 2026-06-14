@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Excellence Tuition Centre - Where Students Achieve More</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Montserrat:wght@600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;font-size:16px;color:#1F2937;background:#fff;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+button{cursor:pointer;border:none;outline:none;font-family:inherit}
+:root{
+  --navy:#0F2747;
+  --gold:#CA9A2C;
+  --gold-dim:rgba(202,154,44,0.3);
+  --light:#F8F9FA;
+  --dark-text:#1F2937;
+  --font-head:'Playfair Display',serif;
+  --font-sub:'Montserrat',sans-serif;
+  --font-body:'Inter',sans-serif;
+}
+section{padding:80px 0}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+.sec-dark{background:var(--navy);color:#fff}
+.sec-white{background:#fff;color:var(--dark-text)}
+.sec-gold{background:var(--gold);color:var(--navy)}
+.text-center{text-align:center}
+.sec-title{font-family:var(--font-head);font-size:clamp(2rem,4vw,3rem);font-weight:700;line-height:1.2;margin-bottom:16px}
+.gold-line{width:60px;height:3px;background:var(--gold);margin-bottom:32px}
+.gold-line.center{margin:0 auto 32px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:50px;font-family:var(--font-sub);font-size:.95rem;font-weight:600;transition:all .25s ease;cursor:pointer}
+.btn-gold{background:var(--gold);color:var(--navy)}
+.btn-gold:hover{background:#b8871f;transform:translateY(-2px);box-shadow:0 8px 24px rgba(202,154,44,.35)}
+.btn-gold-outline{background:transparent;border:2px solid var(--gold);color:var(--gold)}
+.btn-gold-outline:hover{background:var(--gold);color:var(--navy);transform:translateY(-2px)}
+.btn-navy{background:var(--navy);color:#fff}
+.btn-navy:hover{background:#0a1e38;transform:translateY(-2px)}
+.btn-sm{padding:10px 22px;font-size:.85rem}
+/* NAVBAR */
+#navbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 24px;height:72px;display:flex;align-items:center;justify-content:space-between;background:rgba(15,39,71,.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 2px 20px rgba(0,0,0,.3)}
+.nav-logo{display:flex;align-items:center;gap:12px;cursor:pointer}
+.nav-logo-icon{width:44px;height:44px;border:2px solid var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center}
+.nav-logo-e{font-family:var(--font-head);font-size:1.4rem;color:var(--gold)}
+.nav-logo-text{display:flex;flex-direction:column}
+.nav-logo-main{font-family:var(--font-head);font-size:1.2rem;color:#fff;line-height:1}
+.nav-logo-sub{font-family:var(--font-body);font-size:.65rem;color:var(--gold);letter-spacing:.1em;text-transform:uppercase}
+.nav-links{display:flex;align-items:center;gap:8px}
+.nav-link{font-family:var(--font-sub);font-size:.85rem;color:rgba(255,255,255,.8);padding:8px 14px;border-radius:6px;transition:all .2s;cursor:pointer;border-bottom:2px solid transparent}
+.nav-link:hover{color:#fff}
+.nav-link.active{color:var(--gold);border-bottom-color:var(--gold)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px}
+.hamburger span{width:24px;height:2px;background:#fff;border-radius:2px;transition:all .3s}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+#mobile-menu{display:none;position:fixed;top:72px;left:0;right:0;bottom:0;background:var(--navy);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:40px 24px}
+#mobile-menu.open{display:flex}
+.mobile-link{font-family:var(--font-sub);font-size:1.2rem;color:rgba(255,255,255,.8);padding:16px 32px;border-radius:8px;width:100%;text-align:center;cursor:pointer;transition:all .2s;border:1px solid transparent}
+.mobile-link:hover,.mobile-link.active{color:var(--gold);border-color:var(--gold-dim)}
+/* WA FLOAT */
+.wa-float{position:fixed;bottom:32px;right:32px;z-index:900;width:56px;height:56px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.5);transition:transform .2s}
+.wa-float:hover{transform:scale(1.1)}
+.wa-float svg{width:28px;height:28px;fill:#fff}
+/* PAGE */
+.page{display:none;animation:fadeUp .4s ease forwards}
+.page.active{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:none}
+/* FOOTER */
+footer{background:#081b38;color:rgba(255,255,255,.7);padding:48px 0 24px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.footer-brand-name{font-family:var(--font-head);font-size:1.4rem;color:#fff;margin-bottom:8px}
+.footer-brand-tag{font-size:.85rem;color:var(--gold);margin-bottom:16px}
+.footer-desc{font-size:.85rem;line-height:1.7;max-width:280px}
+.footer-col-title{font-family:var(--font-sub);font-size:.9rem;color:#fff;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--gold-dim)}
+.footer-links li{margin-bottom:10px}
+.footer-links a,.footer-links span{font-size:.85rem;cursor:pointer;transition:color .2s;color:rgba(255,255,255,.7)}
+.footer-links a:hover,.footer-links span:hover{color:var(--gold)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;display:flex;justify-content:space-between;align-items:center;font-size:.8rem;flex-wrap:wrap;gap:8px}
+.footer-bottom a{color:var(--gold)}
+/* HERO */
+.hero{min-height:100vh;background:var(--navy);display:flex;align-items:center;position:relative;overflow:hidden;padding-top:72px}
+.hero-pattern{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(202,154,44,.12) 1px,transparent 1px);background-size:40px 40px;pointer-events:none}
+.hero-glow{position:absolute;top:20%;right:10%;width:500px;height:500px;background:radial-gradient(circle,rgba(202,154,44,.08) 0%,transparent 70%);pointer-events:none}
+.hero-content{position:relative;z-index:1;max-width:780px}
+.hero-eyebrow{font-family:var(--font-sub);font-size:.85rem;color:var(--gold);letter-spacing:.15em;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.hero-eyebrow::before{content:'';width:40px;height:1px;background:var(--gold)}
+.hero-h1{font-family:var(--font-head);font-size:clamp(2.8rem,6vw,5rem);color:#fff;line-height:1.1;margin-bottom:24px}
+.hero-h1 span{color:var(--gold)}
+.hero-sub{font-size:1.15rem;color:rgba(255,255,255,.8);line-height:1.7;margin-bottom:40px;max-width:580px}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:48px}
+.hero-badge{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.07);border:1px solid var(--gold-dim);border-radius:50px;padding:10px 20px;font-size:.9rem;color:#fff}
+/* MARQUEE */
+.marquee-section{background:var(--gold);padding:20px 0;overflow:hidden}
+.marquee-track{display:flex;white-space:nowrap;animation:marquee 28s linear infinite}
+.marquee-track:hover{animation-play-state:paused}
+.marquee-item{font-family:var(--font-sub);font-size:.95rem;font-weight:600;color:var(--navy);padding:0 28px;flex-shrink:0}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+/* STATS */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.stat-card{text-align:center;padding:40px 24px;border-radius:16px;background:#fff;border:1px solid var(--gold-dim);box-shadow:0 2px 20px rgba(0,0,0,.05);transition:transform .3s,box-shadow .3s}
+.stat-card:hover{transform:translateY(-4px);box-shadow:0 8px 32px rgba(202,154,44,.15)}
+.stat-num{font-family:var(--font-head);font-size:3rem;color:var(--gold);line-height:1}
+.stat-label{font-family:var(--font-sub);font-size:.85rem;color:var(--dark-text);margin-top:8px;opacity:.7;text-transform:uppercase;letter-spacing:.05em}
+/* CURR CARDS HOME */
+.curriculum-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.curr-card{background:rgba(255,255,255,.04);border:1px solid var(--gold-dim);border-radius:16px;padding:32px 24px;transition:all .3s}
+.curr-card:hover{transform:translateY(-6px);box-shadow:0 12px 40px rgba(202,154,44,.2);border-color:var(--gold);background:rgba(202,154,44,.05)}
+.curr-name{font-family:var(--font-head);font-size:1.8rem;color:var(--gold);margin-bottom:8px}
+.curr-desc{font-size:.85rem;color:rgba(255,255,255,.7);margin-bottom:16px}
+.curr-grade{font-family:var(--font-sub);font-size:.8rem;color:var(--gold);margin-bottom:16px;padding:4px 12px;border:1px solid var(--gold-dim);border-radius:50px;display:inline-block}
+.curr-subjects li{font-size:.85rem;color:rgba(255,255,255,.75);padding:4px 0 4px 16px;position:relative}
+.curr-subjects li::before{content:'›';position:absolute;left:0;color:var(--gold)}
+/* STEPS */
+.steps-row{display:flex;align-items:flex-start;position:relative}
+.steps-row::before{content:'';position:absolute;top:28px;left:calc(12.5% + 20px);right:calc(12.5% + 20px);height:2px;background:repeating-linear-gradient(90deg,var(--gold) 0,var(--gold) 8px,transparent 8px,transparent 16px)}
+.step{flex:1;text-align:center;padding:0 16px;position:relative;z-index:1}
+.step-num{width:56px;height:56px;border-radius:50%;background:var(--gold);color:var(--navy);font-family:var(--font-head);font-size:1.4rem;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;box-shadow:0 4px 16px rgba(202,154,44,.4)}
+.step-title{font-family:var(--font-sub);font-size:1rem;color:var(--dark-text);margin-bottom:8px}
+.step-desc{font-size:.85rem;color:var(--dark-text);opacity:.7;line-height:1.6}
+/* TESTI */
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:40px}
+.testi-card{background:rgba(255,255,255,.04);border-left:3px solid var(--gold);border-radius:0 12px 12px 0;padding:28px 24px}
+.testi-stars{color:var(--gold);font-size:1rem;margin-bottom:12px;letter-spacing:2px}
+.testi-quote{font-size:.9rem;color:rgba(255,255,255,.8);line-height:1.7;margin-bottom:16px;font-style:italic}
+.testi-name{font-family:var(--font-sub);font-size:.85rem;color:var(--gold)}
+/* CTA BANNER */
+.cta-banner{text-align:center;padding:72px 24px}
+.cta-banner .sec-title{margin-bottom:8px}
+.cta-banner p{margin-bottom:32px;opacity:.85;font-size:1.1rem}
+/* PAGE HERO */
+.page-hero{padding:120px 0 60px;background:var(--navy);position:relative}
+.page-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.breadcrumb{font-size:.85rem;color:rgba(255,255,255,.5);margin-bottom:16px}
+.breadcrumb span{cursor:pointer;transition:color .2s}
+.breadcrumb span:hover{color:var(--gold)}
+.breadcrumb .sep{margin:0 8px;color:var(--gold-dim)}
+.breadcrumb .current{color:rgba(255,255,255,.8)}
+.page-hero-title{font-family:var(--font-head);font-size:clamp(2rem,5vw,3.5rem);color:#fff}
+.gold-underline{width:80px;height:3px;background:var(--gold);margin-top:16px}
+/* ABOUT */
+.story-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:64px;align-items:start}
+.story-text p{font-size:1rem;line-height:1.8;color:var(--dark-text);margin-bottom:20px;opacity:.9}
+.story-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.story-stat{background:var(--navy);border-radius:12px;padding:28px 20px;text-align:center;border:1px solid var(--gold-dim)}
+.story-stat-num{font-family:var(--font-head);font-size:2.2rem;color:var(--gold)}
+.story-stat-label{font-size:.8rem;color:rgba(255,255,255,.7);margin-top:6px;font-family:var(--font-sub)}
+.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.value-card{background:rgba(255,255,255,.04);border:1px solid var(--gold-dim);border-radius:16px;padding:40px 28px;text-align:center;transition:all .3s}
+.value-card:hover{background:rgba(202,154,44,.06);border-color:var(--gold);transform:translateY(-4px)}
+.value-icon{font-size:2.4rem;margin-bottom:16px}
+.value-title{font-family:var(--font-sub);font-size:1.15rem;color:#fff;margin-bottom:12px}
+.value-desc{font-size:.9rem;color:rgba(255,255,255,.75);line-height:1.7}
+.tutors-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.tutor-card{background:#fff;border:1px solid var(--gold-dim);border-radius:16px;padding:36px 28px;text-align:center;box-shadow:0 2px 20px rgba(0,0,0,.06);transition:all .3s}
+.tutor-card:hover{transform:translateY(-6px);box-shadow:0 12px 40px rgba(202,154,44,.15);border-color:var(--gold)}
+.tutor-avatar{width:80px;height:80px;border-radius:50%;background:var(--gold);color:var(--navy);font-family:var(--font-head);font-size:1.8rem;display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
+.tutor-name{font-family:var(--font-head);font-size:1.2rem;color:var(--navy);margin-bottom:6px}
+.tutor-degree{font-size:.8rem;color:var(--dark-text);opacity:.6;margin-bottom:4px}
+.tutor-uni{font-family:var(--font-sub);font-size:.8rem;color:var(--gold);margin-bottom:12px}
+.tutor-subjects{font-size:.85rem;color:var(--dark-text);opacity:.8;margin-bottom:4px}
+.tutor-exp{font-family:var(--font-sub);font-size:.8rem;color:var(--gold);margin-bottom:20px}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.gallery-item{border-radius:12px;overflow:hidden;position:relative;aspect-ratio:4/3;background:linear-gradient(135deg,rgba(202,154,44,.15),rgba(202,154,44,.05));border:1px solid var(--gold-dim);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px}
+.gallery-shimmer{position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(202,154,44,.08) 50%,transparent 70%);background-size:200% 100%;animation:shimmer 2.5s infinite}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.gallery-icon{font-size:2rem;position:relative;z-index:1}
+.gallery-caption{font-family:var(--font-sub);font-size:.8rem;color:rgba(255,255,255,.8);position:relative;z-index:1}
+/* SUBJECTS */
+.curriculum-detail-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+.curr-detail-card{background:#fff;border:1px solid var(--gold-dim);border-radius:16px;padding:36px 28px;box-shadow:0 2px 20px rgba(0,0,0,.06);transition:all .3s;display:flex;flex-direction:column}
+.curr-detail-card:hover{border-color:var(--gold);transform:translateY(-4px);box-shadow:0 12px 40px rgba(202,154,44,.12)}
+.curr-detail-badge{display:inline-block;padding:4px 14px;border-radius:50px;background:var(--gold);color:var(--navy);font-family:var(--font-sub);font-size:.75rem;margin-bottom:16px}
+.curr-detail-name{font-family:var(--font-head);font-size:1.6rem;color:var(--navy);margin-bottom:8px}
+.curr-detail-desc{font-size:.9rem;color:var(--dark-text);line-height:1.7;margin-bottom:16px;opacity:.85}
+.curr-detail-meta{display:flex;gap:16px;margin-bottom:16px;flex-wrap:wrap}
+.curr-detail-meta span{font-size:.8rem;font-family:var(--font-sub);color:var(--gold);border:1px solid var(--gold-dim);padding:4px 12px;border-radius:50px}
+.curr-detail-subjects{margin-bottom:24px}
+.curr-detail-subjects li{font-size:.85rem;color:var(--dark-text);padding:4px 0 4px 16px;position:relative;opacity:.85}
+.curr-detail-subjects li::before{content:'✦';position:absolute;left:0;color:var(--gold);font-size:.7rem;top:5px}
+.subjects-8grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.subj-card{background:rgba(255,255,255,.04);border:1px solid var(--gold-dim);border-radius:12px;padding:28px 20px;text-align:center;transition:all .3s}
+.subj-card:hover{border-color:var(--gold);background:rgba(202,154,44,.07);transform:translateY(-3px)}
+.subj-icon{font-size:2rem;margin-bottom:12px}
+.subj-name{font-family:var(--font-sub);font-size:1rem;color:#fff;margin-bottom:6px}
+.subj-line{font-size:.8rem;color:rgba(255,255,255,.6)}
+.batch-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.batch-card{background:#fff;border:1px solid var(--gold-dim);border-radius:14px;padding:28px 20px;text-align:center;box-shadow:0 2px 16px rgba(0,0,0,.05);transition:all .3s}
+.batch-card:hover{border-color:var(--gold);transform:translateY(-4px);box-shadow:0 8px 28px rgba(202,154,44,.12)}
+.batch-time{font-family:var(--font-head);font-size:1.5rem;color:var(--gold);margin-bottom:4px}
+.batch-name{font-family:var(--font-sub);font-size:.95rem;color:var(--navy);margin-bottom:8px}
+.batch-days{font-size:.8rem;color:var(--dark-text);opacity:.6;margin-bottom:12px}
+.batch-subjs{font-size:.8rem;color:var(--dark-text);opacity:.75;margin-bottom:20px;line-height:1.6}
+.mode-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.mode-card{background:rgba(255,255,255,.04);border:1px solid var(--gold-dim);border-radius:16px;padding:40px 32px;transition:border-color .3s}
+.mode-card:hover{border-color:var(--gold)}
+.mode-title{font-family:var(--font-head);font-size:1.6rem;color:#fff;margin-bottom:8px}
+.mode-icon{font-size:2rem;margin-bottom:16px}
+.mode-pros li{font-size:.9rem;color:rgba(255,255,255,.8);padding:6px 0 6px 20px;position:relative}
+.mode-pros li::before{content:'✓';position:absolute;left:0;color:var(--gold)}
+.mode-suits{font-size:.85rem;color:rgba(255,255,255,.6);margin:16px 0 24px;font-style:italic}
+/* RESULTS */
+.big-stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.big-stat{text-align:center;padding:48px 32px;border-radius:16px;background:#fff;border:1px solid var(--gold-dim);box-shadow:0 2px 24px rgba(0,0,0,.06)}
+.big-stat-num{font-family:var(--font-head);font-size:4rem;color:var(--gold);line-height:1;margin-bottom:12px}
+.big-stat-label{font-family:var(--font-sub);font-size:1rem;color:var(--navy);margin-bottom:8px}
+.big-stat-desc{font-size:.875rem;color:var(--dark-text);opacity:.7;line-height:1.6}
+.subj-results-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.subj-result-card{background:rgba(255,255,255,.04);border:1px solid var(--gold-dim);border-radius:14px;padding:28px 20px;text-align:center}
+.subj-result-name{font-family:var(--font-sub);font-size:1rem;color:#fff;margin-bottom:8px}
+.subj-result-pct{font-family:var(--font-head);font-size:2.2rem;color:var(--gold);margin-bottom:16px}
+.progress-bar{height:6px;background:rgba(255,255,255,.1);border-radius:3px;overflow:hidden}
+.progress-fill{height:100%;background:var(--gold);border-radius:3px;width:0;transition:width 1.2s ease}
+.full-testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.full-testi-card{background:#fff;border:1px solid var(--gold-dim);border-radius:14px;padding:32px 24px;box-shadow:0 2px 16px rgba(0,0,0,.06);transition:all .3s}
+.full-testi-card:hover{transform:translateY(-4px);box-shadow:0 10px 32px rgba(202,154,44,.12);border-color:var(--gold)}
+.full-testi-stars{color:var(--gold);font-size:1rem;letter-spacing:2px;margin-bottom:12px}
+.full-testi-quote{font-size:.9rem;color:var(--dark-text);line-height:1.75;margin-bottom:20px;opacity:.85;font-style:italic}
+.full-testi-name{font-family:var(--font-sub);font-size:.9rem;color:var(--navy)}
+.full-testi-detail{font-size:.8rem;color:var(--gold);margin-top:4px}
+.uni-badges{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:32px}
+.uni-badge{padding:12px 24px;border:1px solid var(--gold);border-radius:50px;font-family:var(--font-sub);font-size:.85rem;color:var(--gold);background:rgba(202,154,44,.06);transition:all .3s}
+.uni-badge:hover{background:var(--gold);color:var(--navy)}
+/* PRICING */
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:start}
+.pricing-card{background:#fff;border:1px solid var(--gold-dim);border-radius:20px;padding:40px 32px;text-align:center;box-shadow:0 2px 20px rgba(0,0,0,.06);transition:all .3s;position:relative}
+.pricing-card:hover{transform:translateY(-6px);box-shadow:0 16px 48px rgba(202,154,44,.15)}
+.pricing-card.popular{border:2px solid var(--gold);box-shadow:0 8px 40px rgba(202,154,44,.2);transform:scale(1.03)}
+.pricing-card.popular:hover{transform:scale(1.03) translateY(-4px)}
+.popular-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--navy);font-family:var(--font-sub);font-size:.75rem;padding:6px 20px;border-radius:50px;white-space:nowrap}
+.pricing-tier{font-family:var(--font-sub);font-size:.8rem;color:var(--gold);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}
+.pricing-plan{font-family:var(--font-head);font-size:1.5rem;color:var(--navy);margin-bottom:20px}
+.pricing-price{font-family:var(--font-head);font-size:3rem;color:var(--gold);line-height:1}
+.pricing-price span{font-family:var(--font-body);font-size:1rem;color:var(--dark-text);opacity:.6}
+.pricing-desc{font-size:.85rem;color:var(--dark-text);opacity:.7;margin:16px 0 28px;line-height:1.6}
+.pricing-features{text-align:left;margin-bottom:32px}
+.pricing-features li{font-size:.875rem;color:var(--dark-text);padding:8px 0;border-bottom:1px solid rgba(0,0,0,.05);display:flex;align-items:center;gap:10px}
+.pricing-features li::before{content:'✦';color:var(--gold);font-size:.7rem;flex-shrink:0}
+.compare-table{width:100%;border-collapse:collapse;font-size:.9rem}
+.compare-table th{font-family:var(--font-sub);font-size:.85rem;padding:16px 20px;text-align:center;color:rgba(255,255,255,.8)}
+.compare-table th:first-child{text-align:left;color:var(--gold)}
+.compare-table td{padding:14px 20px;border-bottom:1px solid rgba(255,255,255,.06);color:rgba(255,255,255,.8);text-align:center}
+.compare-table td:first-child{text-align:left;color:rgba(255,255,255,.9)}
+.compare-table tr:last-child td{border-bottom:none}
+.compare-table thead tr{border-bottom:2px solid var(--gold-dim)}
+.check{color:var(--gold)}
+.cross{color:rgba(255,255,255,.25)}
+.faq-list{max-width:780px;margin:0 auto}
+.faq-item{border:1px solid var(--gold-dim);border-radius:12px;margin-bottom:12px;overflow:hidden}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:20px 24px;cursor:pointer;font-family:var(--font-sub);font-size:.95rem;color:var(--dark-text);background:#fff;transition:background .2s}
+.faq-q:hover{background:rgba(202,154,44,.04)}
+.faq-q.open{background:rgba(202,154,44,.06);color:var(--navy)}
+.faq-arrow{width:20px;height:20px;flex-shrink:0;transition:transform .3s;color:var(--gold)}
+.faq-arrow.open{transform:rotate(180deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease;background:#fff}
+.faq-a-inner{padding:0 24px 20px;font-size:.9rem;color:var(--dark-text);line-height:1.75;opacity:.85}
+.faq-a.open{max-height:300px}
+/* CONTACT */
+.contact-cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.contact-card{background:#fff;border:1px solid var(--gold-dim);border-radius:16px;padding:40px 28px;text-align:center;box-shadow:0 2px 16px rgba(0,0,0,.06);transition:all .3s}
+.contact-card:hover{transform:translateY(-4px);box-shadow:0 10px 32px rgba(202,154,44,.12);border-color:var(--gold)}
+.contact-icon{font-size:2.5rem;margin-bottom:16px}
+.contact-type{font-family:var(--font-sub);font-size:.8rem;color:var(--gold);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}
+.contact-value{font-family:var(--font-head);font-size:1.1rem;color:var(--navy);margin-bottom:20px}
+.trial-form{max-width:680px;margin:0 auto}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.form-group{display:flex;flex-direction:column;gap:8px}
+.form-group.full{grid-column:1/-1}
+.form-label{font-family:var(--font-sub);font-size:.8rem;color:rgba(255,255,255,.8);letter-spacing:.05em}
+.form-input,.form-select{width:100%;padding:14px 18px;border-radius:10px;border:1px solid var(--gold-dim);background:rgba(255,255,255,.07);color:#fff;font-family:var(--font-body);font-size:.9rem;transition:border-color .2s;outline:none}
+.form-input::placeholder{color:rgba(255,255,255,.35)}
+.form-input:focus,.form-select:focus{border-color:var(--gold);background:rgba(255,255,255,.1)}
+.form-select option{background:var(--navy);color:#fff}
+.form-success{display:none;background:rgba(202,154,44,.15);border:1px solid var(--gold);border-radius:10px;padding:20px 24px;text-align:center;color:var(--gold);font-family:var(--font-sub);font-size:1rem;margin-top:16px}
+.form-success.show{display:block}
+.map-placeholder{background:var(--navy);border-radius:16px;height:320px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;border:1px solid var(--gold-dim)}
+.map-pin{font-size:3rem}
+.map-label{font-family:var(--font-head);font-size:1.1rem;color:#fff}
+.quick-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--gold-dim)}
+.quick-item{background:var(--navy);padding:28px 24px;text-align:center}
+.quick-icon{font-size:1.5rem;margin-bottom:8px}
+.quick-label{font-family:var(--font-sub);font-size:.8rem;color:var(--gold);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+.quick-val{font-size:.9rem;color:rgba(255,255,255,.8)}
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .stats-grid,.curriculum-grid,.batch-grid,.subj-results-grid{grid-template-columns:repeat(2,1fr)}
+  .full-testi-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .footer-grid>:first-child{grid-column:1/-1}
+}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .story-grid,.mode-grid,.curriculum-detail-grid{grid-template-columns:1fr}
+  .pricing-grid,.big-stats-grid,.full-testi-grid{grid-template-columns:1fr}
+  .pricing-card.popular{transform:none}
+  .steps-row{flex-direction:column;align-items:center;gap:32px}
+  .steps-row::before{display:none}
+  .testi-grid,.tutors-grid,.values-grid,.contact-cards-grid{grid-template-columns:1fr}
+  .subjects-8grid{grid-template-columns:repeat(2,1fr)}
+  .gallery-grid{grid-template-columns:repeat(2,1fr)}
+  .hero-h1{font-size:2.4rem}
+  .hero-btns{flex-direction:column;align-items:flex-start}
+  .form-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .quick-strip{grid-template-columns:1fr}
+  section{padding:56px 0}
+  .compare-table{display:block;overflow-x:auto}
+  .wa-float{bottom:20px;right:20px;width:48px;height:48px}
+}
+@media(max-width:480px){
+  .stats-grid,.batch-grid,.subj-results-grid,.curriculum-grid{grid-template-columns:1fr}
+  .subjects-8grid,.gallery-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-logo" onclick="showPage('home')">
+    <div class="nav-logo-icon"><span class="nav-logo-e">E</span></div>
+    <div class="nav-logo-text"><span class="nav-logo-main">Excellence</span><span class="nav-logo-sub">Tuition Centre</span></div>
+  </div>
+  <div class="nav-links">
+    <span class="nav-link active" data-page="home" onclick="showPage('home')">Home</span>
+    <span class="nav-link" data-page="about" onclick="showPage('about')">About</span>
+    <span class="nav-link" data-page="subjects" onclick="showPage('subjects')">Subjects</span>
+    <span class="nav-link" data-page="results" onclick="showPage('results')">Results</span>
+    <span class="nav-link" data-page="pricing" onclick="showPage('pricing')">Pricing</span>
+    <span class="nav-link" data-page="contact" onclick="showPage('contact')">Contact</span>
+  </div>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+<div id="mobile-menu">
+  <span class="mobile-link active" data-page="home" onclick="showPage('home');toggleMenu()">Home</span>
+  <span class="mobile-link" data-page="about" onclick="showPage('about');toggleMenu()">About</span>
+  <span class="mobile-link" data-page="subjects" onclick="showPage('subjects');toggleMenu()">Subjects</span>
+  <span class="mobile-link" data-page="results" onclick="showPage('results');toggleMenu()">Results</span>
+  <span class="mobile-link" data-page="pricing" onclick="showPage('pricing');toggleMenu()">Pricing</span>
+  <span class="mobile-link" data-page="contact" onclick="showPage('contact');toggleMenu()">Contact</span>
+</div>
+<a href="https://wa.me/971500000000" target="_blank" class="wa-float" title="WhatsApp Us">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+<!-- PAGE HOME -->
+<div class="page active" id="page-home">
+  <section class="hero">
+    <div class="hero-pattern"></div><div class="hero-glow"></div>
+    <div class="container"><div class="hero-content">
+      <div class="hero-eyebrow">Excellence Tuition Centre &mdash; Business Bay, Dubai</div>
+      <h1 class="hero-h1">Your Child's <span>A*</span><br>Starts Here</h1>
+      <p class="hero-sub">Expert tutoring for IGCSE, A Levels, IB and CBSE students across Dubai. 92% of our students achieve A* or A.</p>
+      <div class="hero-btns">
+        <button class="btn btn-gold" onclick="showPage('contact')">Book Free Trial Class</button>
+        <button class="btn btn-gold-outline" onclick="showPage('results')">See Our Results</button>
+      </div>
+      <div class="hero-badge"><span style="color:var(--gold)">&#11088;</span> 500+ Students Enrolled Across Dubai</div>
+    </div></div>
+  </section>
+  <div class="marquee-section"><div class="marquee-track">
+    <span class="marquee-item">IGCSE</span><span class="marquee-item" style="opacity:.4">&#10022;</span><span class="marquee-item">A Levels</span><span class="marquee-item" style="opacity:.4">&#10022;</span><span class="marquee-item">IB</span><span class="marquee-item" style="opacity:.4">&#10022;</span><span class="marquee-item">CBSE</span><span class="marquee-item" style="opacity:.4">&#10022;</span><span class="marquee-item">Cambridge</span><span class="marquee-item" style="opacity:.4">&#10022;</span><span class="marquee-item">Edexcel</span><span class="marquee-item" style="opacity:.4">&#10022;</span><span class="marquee-item">Mathematics</span><span class="marquee-item" style="opacity:.4">&#10022;</span><span class="marquee-item">Physics</span><span class="marquee-item" style="opacity:.4">&#10022;</span><span class="marquee-item">Chemistry</span><span class="marquee-item" style="opacity:.4">&#10022;</span><span class="marquee-item">Biology</span><span class="marquee-item" style="opacity:.4">&#10022;</span><span class="marquee-item">English</span><span class="marquee-item" style="opacity:.4">&#10022;</span><span class="marquee-item">Economics</span><span class="marquee-item" style="opacity:.4">&#10022;</span><span class="marquee-item">Computer Science</span><span class="marquee-item" style="opacity:.4">&#10022;</span>
+    <span class="marquee-item">IGCSE</span><span class="marquee-item" style="opacity:.4">&#10022;</span><span class="marquee-item">A Levels</span><span class="marquee-item" style="opacity:.4">&#10022;</span><span class="marquee-item">IB</span><span class="marquee-item" style="opacity:.4">&#10022;</span><span class="marquee-item">CBSE</span><span class="marquee-item" style="opacity:.4">&#10022;</span><span class="marquee-item">Cambridge</span><span class="marquee-item" style="opacity:.4">&#10022;</span><span class="marquee-item">Edexcel</span><span class="marquee-item" style="opacity:.4">&#10022;</span><span class="marquee-item">Mathematics</span><span class="marquee-item" style="opacity:.4">&#10022;</span><span class="marquee-item">Physics</span><span class="marquee-item" style="opacity:.4">&#10022;</span><span class="marquee-item">Chemistry</span><span class="marquee-item" style="opacity:.4">&#10022;</span><span class="marquee-item">Biology</span><span class="marquee-item" style="opacity:.4">&#10022;</span><span class="marquee-item">English</span><span class="marquee-item" style="opacity:.4">&#10022;</span><span class="marquee-item">Economics</span><span class="marquee-item" style="opacity:.4">&#10022;</span><span class="marquee-item">Computer Science</span><span class="marquee-item" style="opacity:.4">&#10022;</span>
+  </div></div>
+  <section class="sec-white"><div class="container">
+    <div class="stats-grid reveal">
+      <div class="stat-card"><div class="stat-num">500+</div><div class="stat-label">Students Enrolled</div></div>
+      <div class="stat-card"><div class="stat-num">92%</div><div class="stat-label">A*/A Rate</div></div>
+      <div class="stat-card"><div class="stat-num">4.9&#9733;</div><div class="stat-label">Parent Rating</div></div>
+      <div class="stat-card"><div class="stat-num">5 Yrs</div><div class="stat-label">Of Excellence</div></div>
+    </div>
+  </div></section>
+  <section class="sec-dark"><div class="container">
+    <div class="text-center reveal" style="margin-bottom:48px"><p class="sec-title" style="color:#fff">Curriculums We Specialize In</p><div class="gold-line center"></div></div>
+    <div class="curriculum-grid reveal">
+      <div class="curr-card"><div class="curr-name">IGCSE</div><div class="curr-desc">International General Certificate of Secondary Education</div><span class="curr-grade">Grades 9&ndash;11</span><ul class="curr-subjects"><li>Mathematics</li><li>Physics</li><li>Chemistry</li></ul></div>
+      <div class="curr-card"><div class="curr-name">A Levels</div><div class="curr-desc">Advanced Level &mdash; university entry qualification</div><span class="curr-grade">Grades 11&ndash;13</span><ul class="curr-subjects"><li>Mathematics</li><li>Further Maths</li><li>Physics</li></ul></div>
+      <div class="curr-card"><div class="curr-name">IB</div><div class="curr-desc">International Baccalaureate Diploma Programme</div><span class="curr-grade">Grades 11&ndash;12</span><ul class="curr-subjects"><li>HL Mathematics</li><li>Chemistry</li><li>English</li></ul></div>
+      <div class="curr-card"><div class="curr-name">CBSE</div><div class="curr-desc">Central Board of Secondary Education</div><span class="curr-grade">Grades 8&ndash;12</span><ul class="curr-subjects"><li>Mathematics</li><li>Science</li><li>English</li></ul></div>
+    </div>
+  </div></section>
+  <section class="sec-white"><div class="container">
+    <div class="text-center reveal" style="margin-bottom:56px"><p class="sec-title">How It Works</p><div class="gold-line center"></div><p style="font-size:1rem;color:var(--dark-text);opacity:.7">From your first enquiry to exam success &mdash; four simple steps</p></div>
+    <div class="steps-row reveal">
+      <div class="step"><div class="step-num">1</div><div class="step-title">Book Trial</div><div class="step-desc">WhatsApp us and we'll schedule your free 1-hour trial class with no commitment</div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-title">Assessment</div><div class="step-desc">Our tutor identifies your child's strengths, gaps, and learning style in the first session</div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-title">Study Plan</div><div class="step-desc">A personalised study plan built around your child's curriculum and exam timeline</div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-title">Track Results</div><div class="step-desc">Monthly progress reports and parent calls keep everyone aligned on targets</div></div>
+    </div>
+  </div></section>
+  <section class="sec-dark"><div class="container">
+    <div class="text-center reveal" style="margin-bottom:48px"><p class="sec-title" style="color:#fff">What Parents Are Saying</p><div class="gold-line center"></div></div>
+    <div class="testi-grid reveal">
+      <div class="testi-card"><div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="testi-quote">&ldquo;My daughter went from a C to an A* in IGCSE Maths within 3 months. The tutors here are genuinely exceptional.&rdquo;</p><div class="testi-name">Mrs. Sharma &mdash; IGCSE Parent</div></div>
+      <div class="testi-card"><div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="testi-quote">&ldquo;The WhatsApp support between classes is what truly sets Excellence apart. Always available, always responsive.&rdquo;</p><div class="testi-name">Mrs. Patel &mdash; A Level Parent</div></div>
+      <div class="testi-card"><div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="testi-quote">&ldquo;My son got into his dream university after A Levels. Worth every dirham. Best decision we made.&rdquo;</p><div class="testi-name">Mr. Al Farsi &mdash; A Level Parent</div></div>
+    </div>
+    <div class="text-center reveal"><button class="btn btn-gold" onclick="showPage('results')">Read All Reviews</button></div>
+  </div></section>
+  <section class="sec-gold"><div class="container cta-banner">
+    <p class="sec-title" style="font-family:var(--font-head)">Ready to Book Your Free Trial Class?</p>
+    <p>No commitment. No pressure. Just one class to see the difference.</p>
+    <a href="https://wa.me/971500000000" target="_blank"><button class="btn btn-navy">WhatsApp Us Now</button></a>
+  </div></section>
+<footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div><div class="footer-brand-name">Excellence Tuition Centre</div><div class="footer-brand-tag">Where Students Achieve More</div><p class="footer-desc">Premium tutoring for IGCSE, A Levels, IB and CBSE. Business Bay, Dubai.</p></div>
+        <div><div class="footer-col-title">Quick Links</div><ul class="footer-links"><li><span onclick="showPage('home')">Home</span></li><li><span onclick="showPage('about')">About</span></li><li><span onclick="showPage('subjects')">Subjects</span></li><li><span onclick="showPage('results')">Results</span></li><li><span onclick="showPage('pricing')">Pricing</span></li><li><span onclick="showPage('contact')">Contact</span></li></ul></div>
+        <div><div class="footer-col-title">Contact</div><ul class="footer-links"><li><a href="https://wa.me/971500000000" target="_blank">+971 50 000 0000</a></li><li><a href="mailto:hello@excellence.ae">hello@excellence.ae</a></li><li><span>Business Bay, Dubai</span></li><li><span>Sat&ndash;Thu 8am&ndash;8pm</span></li></ul></div>
+      </div>
+      <div class="footer-bottom"><span>&copy; 2026 Excellence Tuition Centre. All rights reserved.</span><span>Website by <a href="#">DopeOrca</a></span></div>
+    </div>
+  </footer>
+</div>
+<!-- PAGE ABOUT -->
+<div class="page" id="page-about">
+  <div class="page-hero"><div class="container">
+    <div class="breadcrumb"><span onclick="showPage('home')">Home</span><span class="sep">&rsaquo;</span><span class="current">About</span></div>
+    <h1 class="page-hero-title">About Excellence<br>Tuition Centre</h1>
+    <div class="gold-underline"></div>
+  </div></div>
+  <section class="sec-white"><div class="container">
+    <div class="story-grid reveal">
+      <div class="story-text">
+        <p class="sec-title" style="margin-bottom:12px">Our Story</p><div class="gold-line"></div>
+        <p>Founded in 2019 in the heart of Business Bay, Excellence Tuition Centre was built on one simple belief: every student can achieve outstanding results when they receive the right guidance, in the right environment, at the right time.</p>
+        <p>Our mission is to bridge the gap between classroom learning and exam excellence. We work with students across IGCSE, A Levels, IB, and CBSE &mdash; providing structured, curriculum-aligned support that produces measurable grade improvements within weeks.</p>
+        <p>We keep our batch sizes deliberately small &mdash; a maximum of 6 students per group &mdash; so that every student receives meaningful individual attention. Our tutors are subject specialists who have themselves excelled in the examinations they now teach.</p>
+      </div>
+      <div class="story-stats">
+        <div class="story-stat"><div class="story-stat-num">500+</div><div class="story-stat-label">Students Taught</div></div>
+        <div class="story-stat"><div class="story-stat-num">92%</div><div class="story-stat-label">A*/A Rate</div></div>
+        <div class="story-stat"><div class="story-stat-num">4.9&#9733;</div><div class="story-stat-label">Parent Rating</div></div>
+        <div class="story-stat"><div class="story-stat-num">5 Yrs</div><div class="story-stat-label">Of Excellence</div></div>
+      </div>
+    </div>
+  </div></section>
+  <section class="sec-dark"><div class="container">
+    <div class="text-center reveal" style="margin-bottom:48px"><p class="sec-title" style="color:#fff">Our Values</p><div class="gold-line center"></div></div>
+    <div class="values-grid reveal">
+      <div class="value-card"><div class="value-icon">&#127942;</div><div class="value-title">Academic Excellence</div><div class="value-desc">Rigorous, exam-focused sessions that teach content, technique, time management, and how to maximise marks under pressure.</div></div>
+      <div class="value-card"><div class="value-icon">&#127919;</div><div class="value-title">Student First</div><div class="value-desc">Small batches, personalised study plans, and unlimited WhatsApp support. Every decision guided by what is best for your child.</div></div>
+      <div class="value-card"><div class="value-icon">&#128172;</div><div class="value-title">Transparent Communication</div><div class="value-desc">Monthly progress reports, parent feedback calls, and always-available WhatsApp. No surprises &mdash; only progress.</div></div>
+    </div>
+  </div></section>
+  <section class="sec-white"><div class="container">
+    <div class="text-center reveal" style="margin-bottom:48px"><p class="sec-title">Expert Tutors Who Actually Care</p><div class="gold-line center"></div></div>
+    <div class="tutors-grid reveal">
+      <div class="tutor-card"><div class="tutor-avatar">AS</div><div class="tutor-name">Mr. Aryan Shah</div><div class="tutor-degree">BSc Mathematics (First Class)</div><div class="tutor-uni">Imperial College London</div><div class="tutor-subjects">IGCSE &amp; A Level Mathematics, Physics</div><div class="tutor-exp">7 Years Experience</div><button class="btn btn-gold btn-sm" onclick="showPage('contact')">Book Demo Class</button></div>
+      <div class="tutor-card"><div class="tutor-avatar">PN</div><div class="tutor-name">Ms. Priya Nair</div><div class="tutor-degree">MSc Chemistry</div><div class="tutor-uni">University of Dubai</div><div class="tutor-subjects">IGCSE &amp; A Level Chemistry, Biology</div><div class="tutor-exp">5 Years Experience</div><button class="btn btn-gold btn-sm" onclick="showPage('contact')">Book Demo Class</button></div>
+      <div class="tutor-card"><div class="tutor-avatar">OH</div><div class="tutor-name">Mr. Omar Hassan</div><div class="tutor-degree">BA English Literature</div><div class="tutor-uni">American University of Sharjah</div><div class="tutor-subjects">IGCSE English Language, Economics</div><div class="tutor-exp">6 Years Experience</div><button class="btn btn-gold btn-sm" onclick="showPage('contact')">Book Demo Class</button></div>
+    </div>
+  </div></section>
+  <section class="sec-dark"><div class="container">
+    <div class="text-center reveal" style="margin-bottom:48px"><p class="sec-title" style="color:#fff">Our Learning Environment</p><div class="gold-line center"></div></div>
+    <div class="gallery-grid reveal">
+      <div class="gallery-item"><div class="gallery-shimmer"></div><div class="gallery-icon">&#127963;</div><div class="gallery-caption">Main Classroom</div></div>
+      <div class="gallery-item"><div class="gallery-shimmer"></div><div class="gallery-icon">&#128218;</div><div class="gallery-caption">Study Hall</div></div>
+      <div class="gallery-item"><div class="gallery-shimmer"></div><div class="gallery-icon">&#127891;</div><div class="gallery-caption">One-on-One Room</div></div>
+      <div class="gallery-item"><div class="gallery-shimmer"></div><div class="gallery-icon">&#128214;</div><div class="gallery-caption">Library Corner</div></div>
+      <div class="gallery-item"><div class="gallery-shimmer"></div><div class="gallery-icon">&#9749;</div><div class="gallery-caption">Break Area</div></div>
+      <div class="gallery-item"><div class="gallery-shimmer"></div><div class="gallery-icon">&#128187;</div><div class="gallery-caption">Reception</div></div>
+    </div>
+  </div></section>
+<footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div><div class="footer-brand-name">Excellence Tuition Centre</div><div class="footer-brand-tag">Where Students Achieve More</div><p class="footer-desc">Premium tutoring for IGCSE, A Levels, IB and CBSE. Business Bay, Dubai.</p></div>
+        <div><div class="footer-col-title">Quick Links</div><ul class="footer-links"><li><span onclick="showPage('home')">Home</span></li><li><span onclick="showPage('about')">About</span></li><li><span onclick="showPage('subjects')">Subjects</span></li><li><span onclick="showPage('results')">Results</span></li><li><span onclick="showPage('pricing')">Pricing</span></li><li><span onclick="showPage('contact')">Contact</span></li></ul></div>
+        <div><div class="footer-col-title">Contact</div><ul class="footer-links"><li><a href="https://wa.me/971500000000" target="_blank">+971 50 000 0000</a></li><li><a href="mailto:hello@excellence.ae">hello@excellence.ae</a></li><li><span>Business Bay, Dubai</span></li><li><span>Sat&ndash;Thu 8am&ndash;8pm</span></li></ul></div>
+      </div>
+      <div class="footer-bottom"><span>&copy; 2026 Excellence Tuition Centre. All rights reserved.</span><span>Website by <a href="#">DopeOrca</a></span></div>
+    </div>
+  </footer>
+</div>
+<!-- PAGE SUBJECTS -->
+<div class="page" id="page-subjects">
+  <div class="page-hero"><div class="container">
+    <div class="breadcrumb"><span onclick="showPage('home')">Home</span><span class="sep">&rsaquo;</span><span class="current">Subjects</span></div>
+    <h1 class="page-hero-title">Subjects &amp; Curriculums</h1><div class="gold-underline"></div>
+  </div></div>
+  <section class="sec-white"><div class="container">
+    <div class="text-center reveal" style="margin-bottom:48px"><p class="sec-title">Curriculums We Teach</p><div class="gold-line center"></div></div>
+    <div class="curriculum-detail-grid reveal">
+      <div class="curr-detail-card"><div class="curr-detail-badge">Cambridge / Edexcel</div><div class="curr-detail-name">IGCSE</div><p class="curr-detail-desc">The International General Certificate of Secondary Education is the world's most popular international qualification for 14&ndash;16 year olds. Our IGCSE programme focuses on deep conceptual understanding combined with systematic exam technique training.</p><div class="curr-detail-meta"><span>Grades 9&ndash;11</span><span>Cambridge &amp; Edexcel</span></div><ul class="curr-detail-subjects"><li>Mathematics</li><li>Physics</li><li>Chemistry</li><li>Biology</li><li>English Language</li><li>Economics</li></ul><div style="margin-top:auto;padding-top:24px"><button class="btn btn-gold btn-sm" onclick="showPage('contact')">Enquire Now</button></div></div>
+      <div class="curr-detail-card"><div class="curr-detail-badge">Cambridge / Edexcel</div><div class="curr-detail-name">A Levels</div><p class="curr-detail-desc">Advanced Levels are the gold standard for university entry in the UK and internationally. Our tutors know exactly what top grades require &mdash; past paper mastery, mark scheme fluency, and structured essay technique for humanities subjects.</p><div class="curr-detail-meta"><span>Grades 11&ndash;13</span><span>Cambridge &amp; Edexcel</span></div><ul class="curr-detail-subjects"><li>Mathematics</li><li>Further Mathematics</li><li>Physics</li><li>Chemistry</li><li>Biology</li><li>Economics</li></ul><div style="margin-top:auto;padding-top:24px"><button class="btn btn-gold btn-sm" onclick="showPage('contact')">Enquire Now</button></div></div>
+      <div class="curr-detail-card"><div class="curr-detail-badge">IB Organisation</div><div class="curr-detail-name">IB Diploma</div><p class="curr-detail-desc">One of the most demanding pre-university programmes in the world. We support students at both SL and HL with particular strength in Mathematics, Sciences, and English A &amp; B. Internal Assessment support included.</p><div class="curr-detail-meta"><span>Grades 11&ndash;12</span><span>IB Organisation</span></div><ul class="curr-detail-subjects"><li>Mathematics AA &amp; AI</li><li>Physics</li><li>Chemistry</li><li>Biology</li><li>English A &amp; B</li><li>Economics</li></ul><div style="margin-top:auto;padding-top:24px"><button class="btn btn-gold btn-sm" onclick="showPage('contact')">Enquire Now</button></div></div>
+      <div class="curr-detail-card"><div class="curr-detail-badge">CBSE India</div><div class="curr-detail-name">CBSE</div><p class="curr-detail-desc">Widely followed by Indian expat families in the UAE. Our CBSE tutors are deeply familiar with NCERT textbooks and board exam patterns, preparing students thoroughly for Class 10 and Class 12 board examinations.</p><div class="curr-detail-meta"><span>Grades 8&ndash;12</span><span>CBSE India</span></div><ul class="curr-detail-subjects"><li>Mathematics</li><li>Physics</li><li>Chemistry</li><li>Biology</li><li>English Core</li><li>Accountancy</li></ul><div style="margin-top:auto;padding-top:24px"><button class="btn btn-gold btn-sm" onclick="showPage('contact')">Enquire Now</button></div></div>
+    </div>
+  </div></section>
+  <section class="sec-dark"><div class="container">
+    <div class="text-center reveal" style="margin-bottom:48px"><p class="sec-title" style="color:#fff">Every Subject We Cover</p><div class="gold-line center"></div></div>
+    <div class="subjects-8grid reveal">
+      <div class="subj-card"><div class="subj-icon">&#128208;</div><div class="subj-name">Mathematics</div><div class="subj-line">IGCSE &middot; A Level &middot; IB &middot; CBSE</div></div>
+      <div class="subj-card"><div class="subj-icon">&#9883;</div><div class="subj-name">Physics</div><div class="subj-line">IGCSE &middot; A Level &middot; IB &middot; CBSE</div></div>
+      <div class="subj-card"><div class="subj-icon">&#129514;</div><div class="subj-name">Chemistry</div><div class="subj-line">IGCSE &middot; A Level &middot; IB &middot; CBSE</div></div>
+      <div class="subj-card"><div class="subj-icon">&#129516;</div><div class="subj-name">Biology</div><div class="subj-line">IGCSE &middot; A Level &middot; IB &middot; CBSE</div></div>
+      <div class="subj-card"><div class="subj-icon">&#128221;</div><div class="subj-name">English Language</div><div class="subj-line">IGCSE &middot; A Level &middot; IB</div></div>
+      <div class="subj-card"><div class="subj-icon">&#128200;</div><div class="subj-name">Economics</div><div class="subj-line">IGCSE &middot; A Level &middot; IB</div></div>
+      <div class="subj-card"><div class="subj-icon">&#128187;</div><div class="subj-name">Computer Science</div><div class="subj-line">IGCSE &middot; A Level</div></div>
+      <div class="subj-card"><div class="subj-icon">&#127769;</div><div class="subj-name">Arabic</div><div class="subj-line">IGCSE &middot; Native &amp; Foreign</div></div>
+    </div>
+  </div></section>
+  <section class="sec-white"><div class="container">
+    <div class="text-center reveal" style="margin-bottom:48px"><p class="sec-title">Batch Schedule</p><div class="gold-line center"></div></div>
+    <div class="batch-grid reveal">
+      <div class="batch-card"><div class="batch-time">8&ndash;10am</div><div class="batch-name">Morning Batch</div><div class="batch-days">Monday &ndash; Friday</div><div class="batch-subjs">Mathematics &middot; Physics &middot; Chemistry</div><button class="btn btn-gold-outline btn-sm" onclick="showPage('contact')">Enquire</button></div>
+      <div class="batch-card"><div class="batch-time">2&ndash;4pm</div><div class="batch-name">Afternoon Batch</div><div class="batch-days">Monday &ndash; Friday</div><div class="batch-subjs">Biology &middot; Economics &middot; English</div><button class="btn btn-gold-outline btn-sm" onclick="showPage('contact')">Enquire</button></div>
+      <div class="batch-card"><div class="batch-time">5&ndash;7pm</div><div class="batch-name">Evening Batch</div><div class="batch-days">Monday &ndash; Saturday</div><div class="batch-subjs">All Subjects Available</div><button class="btn btn-gold-outline btn-sm" onclick="showPage('contact')">Enquire</button></div>
+      <div class="batch-card"><div class="batch-time">9am&ndash;1pm</div><div class="batch-name">Weekend Batch</div><div class="batch-days">Saturday &ndash; Sunday</div><div class="batch-subjs">Intensive Revision &middot; Mock Tests</div><button class="btn btn-gold-outline btn-sm" onclick="showPage('contact')">Enquire</button></div>
+    </div>
+  </div></section>
+  <section class="sec-dark"><div class="container">
+    <div class="text-center reveal" style="margin-bottom:48px"><p class="sec-title" style="color:#fff">In-Person or Online &mdash; Your Choice</p><div class="gold-line center"></div></div>
+    <div class="mode-grid reveal">
+      <div class="mode-card"><div class="mode-icon">&#127963;</div><div class="mode-title">In-Person Classes</div><p style="font-size:.9rem;color:rgba(255,255,255,.7);margin-bottom:16px">Learn in our premium Business Bay centre with full classroom resources</p><ul class="mode-pros"><li>Face-to-face tutor interaction</li><li>Whiteboard and textbook access</li><li>Peer learning environment</li><li>Structured classroom sessions</li><li>On-site mock exams</li></ul><p class="mode-suits">Best for: Students who thrive with structured in-person learning</p><button class="btn btn-gold btn-sm" onclick="showPage('contact')">Book In-Person Trial</button></div>
+      <div class="mode-card"><div class="mode-icon">&#128187;</div><div class="mode-title">Online Classes</div><p style="font-size:.9rem;color:rgba(255,255,255,.7);margin-bottom:16px">Join via Zoom with digital whiteboard and recorded sessions for revision</p><ul class="mode-pros"><li>Learn from home &mdash; no commute</li><li>Session recordings for revision</li><li>Digital whiteboard &amp; screen share</li><li>Same tutors, same quality</li><li>Flexible rescheduling</li></ul><p class="mode-suits">Best for: Students with busy schedules or living outside Business Bay</p><button class="btn btn-gold btn-sm" onclick="showPage('contact')">Book Online Trial</button></div>
+    </div>
+  </div></section>
+<footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div><div class="footer-brand-name">Excellence Tuition Centre</div><div class="footer-brand-tag">Where Students Achieve More</div><p class="footer-desc">Premium tutoring for IGCSE, A Levels, IB and CBSE. Business Bay, Dubai.</p></div>
+        <div><div class="footer-col-title">Quick Links</div><ul class="footer-links"><li><span onclick="showPage('home')">Home</span></li><li><span onclick="showPage('about')">About</span></li><li><span onclick="showPage('subjects')">Subjects</span></li><li><span onclick="showPage('results')">Results</span></li><li><span onclick="showPage('pricing')">Pricing</span></li><li><span onclick="showPage('contact')">Contact</span></li></ul></div>
+        <div><div class="footer-col-title">Contact</div><ul class="footer-links"><li><a href="https://wa.me/971500000000" target="_blank">+971 50 000 0000</a></li><li><a href="mailto:hello@excellence.ae">hello@excellence.ae</a></li><li><span>Business Bay, Dubai</span></li><li><span>Sat&ndash;Thu 8am&ndash;8pm</span></li></ul></div>
+      </div>
+      <div class="footer-bottom"><span>&copy; 2026 Excellence Tuition Centre. All rights reserved.</span><span>Website by <a href="#">DopeOrca</a></span></div>
+    </div>
+  </footer>
+</div>
+<!-- PAGE RESULTS -->
+<div class="page" id="page-results">
+  <div class="page-hero"><div class="container">
+    <div class="breadcrumb"><span onclick="showPage('home')">Home</span><span class="sep">&rsaquo;</span><span class="current">Results</span></div>
+    <h1 class="page-hero-title">Results That Speak<br>For Themselves</h1><div class="gold-underline"></div>
+  </div></div>
+  <section class="sec-white"><div class="container">
+    <div class="big-stats-grid reveal">
+      <div class="big-stat"><div class="big-stat-num">92%</div><div class="big-stat-label">A*/A Rate</div><div class="big-stat-desc">92% of our students who sat external examinations achieved an A* or A grade &mdash; consistently above the global average</div></div>
+      <div class="big-stat"><div class="big-stat-num">500+</div><div class="big-stat-label">Students Taught</div><div class="big-stat-desc">Over five years, more than 500 students across Dubai have trusted Excellence Tuition Centre with their education</div></div>
+      <div class="big-stat"><div class="big-stat-num">4.9/5</div><div class="big-stat-label">Parent Rating</div><div class="big-stat-desc">Consistently rated 4.9 out of 5 by parents in post-exam satisfaction surveys across all subjects</div></div>
+    </div>
+  </div></section>
+  <section class="sec-dark"><div class="container">
+    <div class="text-center reveal" style="margin-bottom:48px"><p class="sec-title" style="color:#fff">Top Performing Subjects</p><div class="gold-line center"></div></div>
+    <div class="subj-results-grid reveal" id="results-bars">
+      <div class="subj-result-card"><div class="subj-result-name">Mathematics</div><div class="subj-result-pct">96%</div><div class="progress-bar"><div class="progress-fill" data-pct="96"></div></div><div style="font-size:.75rem;color:rgba(255,255,255,.5);margin-top:8px">A*/A Rate</div></div>
+      <div class="subj-result-card"><div class="subj-result-name">Physics</div><div class="subj-result-pct">91%</div><div class="progress-bar"><div class="progress-fill" data-pct="91"></div></div><div style="font-size:.75rem;color:rgba(255,255,255,.5);margin-top:8px">A*/A Rate</div></div>
+      <div class="subj-result-card"><div class="subj-result-name">Chemistry</div><div class="subj-result-pct">89%</div><div class="progress-bar"><div class="progress-fill" data-pct="89"></div></div><div style="font-size:.75rem;color:rgba(255,255,255,.5);margin-top:8px">A*/A Rate</div></div>
+      <div class="subj-result-card"><div class="subj-result-name">English</div><div class="subj-result-pct">94%</div><div class="progress-bar"><div class="progress-fill" data-pct="94"></div></div><div style="font-size:.75rem;color:rgba(255,255,255,.5);margin-top:8px">A*/A Rate</div></div>
+    </div>
+  </div></section>
+  <section class="sec-white"><div class="container">
+    <div class="text-center reveal" style="margin-bottom:48px"><p class="sec-title">What Parents Are Saying</p><div class="gold-line center"></div></div>
+    <div class="full-testi-grid reveal">
+      <div class="full-testi-card"><div class="full-testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="full-testi-quote">&ldquo;My daughter went from a C to an A* in IGCSE Mathematics in just 3 months. I honestly did not believe it was possible. The tutors are genuinely exceptional &mdash; patient, thorough, and deeply knowledgeable about what examiners want.&rdquo;</p><div class="full-testi-name">Mrs. Sharma</div><div class="full-testi-detail">IGCSE Parent &middot; Mathematics</div></div>
+      <div class="full-testi-card"><div class="full-testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="full-testi-quote">&ldquo;My son had been struggling with A Level Chemistry for over a year. After just one term at Excellence, he got an A in his AS exams. He is now confident, motivated, and has secured an offer from his dream university.&rdquo;</p><div class="full-testi-name">Mr. Al Farsi</div><div class="full-testi-detail">A Level Parent &middot; Chemistry</div></div>
+      <div class="full-testi-card"><div class="full-testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="full-testi-quote">&ldquo;The WhatsApp support between classes truly sets Excellence apart. Our tutor responds within minutes. My daughter feels supported every single day &mdash; not just during class hours. Exceptional service.&rdquo;</p><div class="full-testi-name">Mrs. Patel</div><div class="full-testi-detail">A Level Parent &middot; Mathematics</div></div>
+      <div class="full-testi-card"><div class="full-testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="full-testi-quote">&ldquo;Enrolling my daughter in the IB programme at Excellence was the best decision we made. The tutors understand the IB inside out &mdash; Internal Assessments, TOK, exam strategy. She scored a 42. We are beyond proud.&rdquo;</p><div class="full-testi-name">Mrs. Gupta</div><div class="full-testi-detail">IB Diploma Parent</div></div>
+      <div class="full-testi-card"><div class="full-testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="full-testi-quote">&ldquo;The fees are worth every single dirham. My son's predicted grades went from B/C to A*/A within one semester. The monthly progress reports and parent calls keep us fully informed every step of the way.&rdquo;</p><div class="full-testi-name">Mr. Rahman</div><div class="full-testi-detail">IGCSE Parent &middot; Physics &amp; Maths</div></div>
+      <div class="full-testi-card"><div class="full-testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="full-testi-quote">&ldquo;The CBSE tutor at Excellence is the only reason my son passed his Class 12 board exams. He had completely lost confidence in Mathematics. Within weeks, his attitude changed. He passed with distinction.&rdquo;</p><div class="full-testi-name">Mrs. Thomas</div><div class="full-testi-detail">CBSE Parent &middot; Mathematics</div></div>
+    </div>
+  </div></section>
+  <section class="sec-dark"><div class="container text-center reveal">
+    <p class="sec-title" style="color:#fff">Our Students Got Into</p><div class="gold-line center"></div>
+    <p style="color:rgba(255,255,255,.7);margin-bottom:32px">A selection of universities where Excellence students earned their places</p>
+    <div class="uni-badges">
+      <div class="uni-badge">University of Dubai</div>
+      <div class="uni-badge">American University of Sharjah</div>
+      <div class="uni-badge">BITS Pilani Dubai</div>
+      <div class="uni-badge">Manipal University UAE</div>
+      <div class="uni-badge">Heriot-Watt University Dubai</div>
+      <div class="uni-badge">Middlesex University Dubai</div>
+      <div class="uni-badge">University of Birmingham Dubai</div>
+      <div class="uni-badge">Murdoch University Dubai</div>
+    </div>
+  </div></section>
+<footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div><div class="footer-brand-name">Excellence Tuition Centre</div><div class="footer-brand-tag">Where Students Achieve More</div><p class="footer-desc">Premium tutoring for IGCSE, A Levels, IB and CBSE. Business Bay, Dubai.</p></div>
+        <div><div class="footer-col-title">Quick Links</div><ul class="footer-links"><li><span onclick="showPage('home')">Home</span></li><li><span onclick="showPage('about')">About</span></li><li><span onclick="showPage('subjects')">Subjects</span></li><li><span onclick="showPage('results')">Results</span></li><li><span onclick="showPage('pricing')">Pricing</span></li><li><span onclick="showPage('contact')">Contact</span></li></ul></div>
+        <div><div class="footer-col-title">Contact</div><ul class="footer-links"><li><a href="https://wa.me/971500000000" target="_blank">+971 50 000 0000</a></li><li><a href="mailto:hello@excellence.ae">hello@excellence.ae</a></li><li><span>Business Bay, Dubai</span></li><li><span>Sat&ndash;Thu 8am&ndash;8pm</span></li></ul></div>
+      </div>
+      <div class="footer-bottom"><span>&copy; 2026 Excellence Tuition Centre. All rights reserved.</span><span>Website by <a href="#">DopeOrca</a></span></div>
+    </div>
+  </footer>
+</div>
+<!-- PAGE PRICING -->
+<div class="page" id="page-pricing">
+  <div class="page-hero"><div class="container">
+    <div class="breadcrumb"><span onclick="showPage('home')">Home</span><span class="sep">&rsaquo;</span><span class="current">Pricing</span></div>
+    <h1 class="page-hero-title">Transparent,<br>Simple Pricing</h1>
+    <p style="color:rgba(255,255,255,.7);margin-top:12px;font-size:1.05rem">No hidden fees. No long contracts.</p>
+    <div class="gold-underline"></div>
+  </div></div>
+  <section class="sec-white"><div class="container">
+    <div class="pricing-grid reveal">
+      <div class="pricing-card">
+        <div class="pricing-tier">Get Started</div><div class="pricing-plan">Trial Class</div>
+        <div class="pricing-price">FREE</div>
+        <p class="pricing-desc">One full session, any subject, absolutely no commitment. Experience the Excellence difference before spending a dirham.</p>
+        <ul class="pricing-features"><li>1 Full Session (60 min)</li><li>Any Subject, Any Curriculum</li><li>No Commitment Required</li><li>WhatsApp Followup</li></ul>
+        <button class="btn btn-gold" style="width:100%;justify-content:center" onclick="showPage('contact')">Book Free Trial</button>
+      </div>
+      <div class="pricing-card popular">
+        <div class="popular-badge">&#11088; Most Popular</div>
+        <div class="pricing-tier">Best Value</div><div class="pricing-plan">Monthly</div>
+        <div class="pricing-price">AED 800<span>/month</span></div>
+        <p class="pricing-desc">8 sessions per month with full WhatsApp support and a monthly progress report shared with parents.</p>
+        <ul class="pricing-features"><li>8 Sessions per Month</li><li>WhatsApp Support (24/7)</li><li>Monthly Progress Report</li><li>Flexible Rescheduling</li><li>Past Papers Bank Access</li></ul>
+        <button class="btn btn-gold" style="width:100%;justify-content:center" onclick="showPage('contact')">Get Started</button>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-tier">Full Support</div><div class="pricing-plan">Premium</div>
+        <div class="pricing-price">AED 1,400<span>/month</span></div>
+        <p class="pricing-desc">16 sessions with priority support, dedicated exam prep, 2 mock tests, and a parent feedback call every month.</p>
+        <ul class="pricing-features"><li>16 Sessions per Month</li><li>Priority WhatsApp (5 min reply)</li><li>2 Mock Tests per Month</li><li>Dedicated Exam Prep Plan</li><li>Monthly Parent Feedback Call</li><li>Priority Batch Booking</li></ul>
+        <button class="btn btn-gold" style="width:100%;justify-content:center" onclick="showPage('contact')">Go Premium</button>
+      </div>
+    </div>
+  </div></section>
+  <section class="sec-dark"><div class="container">
+    <div class="text-center reveal" style="margin-bottom:48px"><p class="sec-title" style="color:#fff">What's Included</p><div class="gold-line center"></div></div>
+    <div class="reveal" style="overflow-x:auto">
+      <table class="compare-table">
+        <thead><tr><th>Feature</th><th>Trial</th><th>Monthly</th><th>Premium</th></tr></thead>
+        <tbody>
+          <tr><td>Number of Sessions</td><td>1</td><td>8</td><td>16</td></tr>
+          <tr><td>WhatsApp Support</td><td class="cross">&mdash;</td><td class="check">&#10022;</td><td class="check">&#10022; Priority</td></tr>
+          <tr><td>Progress Report</td><td class="cross">&mdash;</td><td class="check">&#10022; Monthly</td><td class="check">&#10022; Monthly</td></tr>
+          <tr><td>Mock Tests</td><td class="cross">&mdash;</td><td class="cross">&mdash;</td><td class="check">&#10022; 2/month</td></tr>
+          <tr><td>Dedicated Exam Prep</td><td class="cross">&mdash;</td><td class="cross">&mdash;</td><td class="check">&#10022;</td></tr>
+          <tr><td>Parent Feedback Call</td><td class="cross">&mdash;</td><td class="cross">&mdash;</td><td class="check">&#10022; Monthly</td></tr>
+          <tr><td>Priority Booking</td><td class="cross">&mdash;</td><td class="cross">&mdash;</td><td class="check">&#10022;</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div></section>
+  <section class="sec-white"><div class="container">
+    <div class="text-center reveal" style="margin-bottom:48px"><p class="sec-title">Frequently Asked Questions</p><div class="gold-line center"></div></div>
+    <div class="faq-list reveal">
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How does the free trial class work?<svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">WhatsApp us or fill in the contact form and we'll schedule a free 60-minute trial class at your preferred time. You pick the subject and curriculum. The tutor will run a mini assessment to understand your child's current level. No payment required and no obligation to continue.</div></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How many students are in each batch?<svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">We cap every batch at a maximum of 6 students. This ensures every student receives meaningful attention in every session. We also offer one-on-one sessions for students who prefer fully personalised instruction &mdash; contact us for dedicated pricing.</div></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Do you offer online classes?<svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">Yes. We offer fully live online classes via Zoom with digital whiteboard, screen sharing, and recorded sessions. Online students receive exactly the same curriculum support and WhatsApp access as in-person students.</div></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What payment methods do you accept?<svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">We accept Cash, Bank Transfer (UAE bank accounts), and Card payment. Monthly fees are due at the start of each month. We do not charge any registration or joining fee.</div></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What if my child misses a class?<svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">Missed classes can be rescheduled with 24 hours notice at no extra charge. We also send a session summary after every class so your child never falls behind on what was covered.</div></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can we switch subjects or curriculums midway?<svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">Absolutely. If your child wants to add a subject, drop one, or switch curriculums mid-year, we accommodate that with no penalty. Just WhatsApp us and we'll arrange new sessions within 24 hours.</div></div></div>
+    </div>
+  </div></section>
+  <section class="sec-dark"><div class="container cta-banner reveal">
+    <p class="sec-title" style="color:#fff">Still Have Questions?</p>
+    <p style="color:rgba(255,255,255,.75);margin-bottom:32px">Our team typically replies within 10 minutes on WhatsApp</p>
+    <a href="https://wa.me/971500000000" target="_blank"><button class="btn btn-gold">WhatsApp Us Directly</button></a>
+  </div></section>
+<footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div><div class="footer-brand-name">Excellence Tuition Centre</div><div class="footer-brand-tag">Where Students Achieve More</div><p class="footer-desc">Premium tutoring for IGCSE, A Levels, IB and CBSE. Business Bay, Dubai.</p></div>
+        <div><div class="footer-col-title">Quick Links</div><ul class="footer-links"><li><span onclick="showPage('home')">Home</span></li><li><span onclick="showPage('about')">About</span></li><li><span onclick="showPage('subjects')">Subjects</span></li><li><span onclick="showPage('results')">Results</span></li><li><span onclick="showPage('pricing')">Pricing</span></li><li><span onclick="showPage('contact')">Contact</span></li></ul></div>
+        <div><div class="footer-col-title">Contact</div><ul class="footer-links"><li><a href="https://wa.me/971500000000" target="_blank">+971 50 000 0000</a></li><li><a href="mailto:hello@excellence.ae">hello@excellence.ae</a></li><li><span>Business Bay, Dubai</span></li><li><span>Sat&ndash;Thu 8am&ndash;8pm</span></li></ul></div>
+      </div>
+      <div class="footer-bottom"><span>&copy; 2026 Excellence Tuition Centre. All rights reserved.</span><span>Website by <a href="#">DopeOrca</a></span></div>
+    </div>
+  </footer>
+</div>
+<!-- PAGE CONTACT -->
+<div class="page" id="page-contact">
+  <div class="page-hero"><div class="container">
+    <div class="breadcrumb"><span onclick="showPage('home')">Home</span><span class="sep">&rsaquo;</span><span class="current">Contact</span></div>
+    <h1 class="page-hero-title">Get In Touch</h1>
+    <p style="color:rgba(255,255,255,.7);margin-top:12px;font-size:1.05rem">We typically reply within 10 minutes on WhatsApp</p>
+    <div class="gold-underline"></div>
+  </div></div>
+  <section class="sec-white"><div class="container">
+    <div class="contact-cards-grid reveal">
+      <div class="contact-card"><div class="contact-icon">&#128241;</div><div class="contact-type">WhatsApp</div><div class="contact-value">+971 50 000 0000</div><a href="https://wa.me/971500000000" target="_blank"><button class="btn btn-gold btn-sm">Message Us Now</button></a></div>
+      <div class="contact-card"><div class="contact-icon">&#128231;</div><div class="contact-type">Email</div><div class="contact-value">hello@excellence.ae</div><a href="mailto:hello@excellence.ae"><button class="btn btn-gold btn-sm">Send Email</button></a></div>
+      <div class="contact-card"><div class="contact-icon">&#128205;</div><div class="contact-type">Visit Us</div><div class="contact-value">Business Bay, Dubai</div><a href="#map-section"><button class="btn btn-gold btn-sm">Get Directions</button></a></div>
+    </div>
+  </div></section>
+  <section class="sec-dark"><div class="container">
+    <div class="text-center reveal" style="margin-bottom:48px">
+      <p class="sec-title" style="color:#fff">Book Your Free Trial Class</p><div class="gold-line center"></div>
+      <p style="color:rgba(255,255,255,.7)">Fill in the form and we'll WhatsApp you within 10 minutes to confirm your slot</p>
+    </div>
+    <form class="trial-form reveal" id="trial-form" onsubmit="submitForm(event)">
+      <div class="form-grid">
+        <div class="form-group"><label class="form-label">Parent Name *</label><input class="form-input" type="text" placeholder="e.g. Mrs. Sarah Johnson" required></div>
+        <div class="form-group"><label class="form-label">Child's Name *</label><input class="form-input" type="text" placeholder="e.g. Emily Johnson" required></div>
+        <div class="form-group"><label class="form-label">Grade / Year *</label><input class="form-input" type="text" placeholder="e.g. Grade 10 / Year 11" required></div>
+        <div class="form-group"><label class="form-label">Curriculum *</label><select class="form-select" required><option value="" disabled selected>Select curriculum</option><option>IGCSE</option><option>A Levels</option><option>IB Diploma</option><option>CBSE</option></select></div>
+        <div class="form-group"><label class="form-label">Subject *</label><select class="form-select" required><option value="" disabled selected>Select subject</option><option>Mathematics</option><option>Physics</option><option>Chemistry</option><option>Biology</option><option>English Language</option><option>Economics</option><option>Computer Science</option><option>Arabic</option></select></div>
+        <div class="form-group"><label class="form-label">Preferred Batch</label><select class="form-select"><option value="" disabled selected>Select batch time</option><option>Morning 8am&ndash;10am (Mon&ndash;Fri)</option><option>Afternoon 2pm&ndash;4pm (Mon&ndash;Fri)</option><option>Evening 5pm&ndash;7pm (Mon&ndash;Sat)</option><option>Weekend 9am&ndash;1pm (Sat&ndash;Sun)</option></select></div>
+        <div class="form-group full"><label class="form-label">WhatsApp Number *</label><input class="form-input" type="tel" placeholder="e.g. +971 50 000 0000" required></div>
+      </div>
+      <div style="text-align:center;margin-top:32px"><button type="submit" class="btn btn-gold" style="padding:16px 48px;font-size:1rem">Book My Free Trial &#10022;</button></div>
+      <div class="form-success" id="form-success">&#10022;&nbsp; We'll WhatsApp you within 10 minutes to confirm your free trial class!</div>
+    </form>
+  </div></section>
+  <section class="sec-white" id="map-section"><div class="container reveal">
+    <div class="text-center" style="margin-bottom:32px"><p class="sec-title">Find Us</p><div class="gold-line center"></div></div>
+    <div class="map-placeholder">
+      <div class="map-pin">&#128205;</div>
+      <div class="map-label">Excellence Tuition Centre</div>
+      <div style="font-size:.9rem;color:rgba(255,255,255,.6);margin-bottom:8px">Business Bay, Dubai, UAE</div>
+      <a href="https://maps.google.com" target="_blank"><button class="btn btn-gold btn-sm">Open in Google Maps</button></a>
+    </div>
+  </div></section>
+  <div class="sec-dark">
+    <div class="quick-strip">
+      <div class="quick-item"><div class="quick-icon">&#128336;</div><div class="quick-label">Timings</div><div class="quick-val">Saturday &ndash; Thursday, 8am &ndash; 8pm</div></div>
+      <div class="quick-item"><div class="quick-icon">&#128205;</div><div class="quick-label">Location</div><div class="quick-val">Business Bay, Dubai, UAE</div></div>
+      <div class="quick-item"><div class="quick-icon">&#128172;</div><div class="quick-label">WhatsApp</div><div class="quick-val">Reply within 10 minutes</div></div>
+    </div>
+  </div>
+<footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div><div class="footer-brand-name">Excellence Tuition Centre</div><div class="footer-brand-tag">Where Students Achieve More</div><p class="footer-desc">Premium tutoring for IGCSE, A Levels, IB and CBSE. Business Bay, Dubai.</p></div>
+        <div><div class="footer-col-title">Quick Links</div><ul class="footer-links"><li><span onclick="showPage('home')">Home</span></li><li><span onclick="showPage('about')">About</span></li><li><span onclick="showPage('subjects')">Subjects</span></li><li><span onclick="showPage('results')">Results</span></li><li><span onclick="showPage('pricing')">Pricing</span></li><li><span onclick="showPage('contact')">Contact</span></li></ul></div>
+        <div><div class="footer-col-title">Contact</div><ul class="footer-links"><li><a href="https://wa.me/971500000000" target="_blank">+971 50 000 0000</a></li><li><a href="mailto:hello@excellence.ae">hello@excellence.ae</a></li><li><span>Business Bay, Dubai</span></li><li><span>Sat&ndash;Thu 8am&ndash;8pm</span></li></ul></div>
+      </div>
+      <div class="footer-bottom"><span>&copy; 2026 Excellence Tuition Centre. All rights reserved.</span><span>Website by <a href="#">DopeOrca</a></span></div>
+    </div>
+  </footer>
+</div>
+<script>
+
+function showPage(name) {
+  document.querySelectorAll(".page").forEach(function(p){ p.classList.remove("active"); p.style.display="none"; });
+  var t = document.getElementById("page-"+name);
+  if(!t) return;
+  t.style.display = "block";
+  requestAnimationFrame(function(){ requestAnimationFrame(function(){ t.classList.add("active"); }); });
+  document.querySelectorAll(".nav-link,.mobile-link").forEach(function(l){ l.classList.toggle("active", l.dataset.page===name); });
+  window.scrollTo({top:0,behavior:"instant"});
+  if(name==="results") setTimeout(animateProgressBars, 500);
+  setTimeout(runReveal, 120);
+}
+
+function toggleMenu(){
+  document.getElementById("hamburger").classList.toggle("open");
+  document.getElementById("mobile-menu").classList.toggle("open");
+}
+window.addEventListener("resize",function(){
+  if(window.innerWidth>768){
+    document.getElementById("hamburger").classList.remove("open");
+    document.getElementById("mobile-menu").classList.remove("open");
+  }
+});
+
+function runReveal(){
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add("visible"); obs.unobserve(e.target); }
+    });
+  },{threshold:0.08,rootMargin:"0px 0px -30px 0px"});
+  document.querySelectorAll(".reveal:not(.visible)").forEach(function(el){ obs.observe(el); });
+}
+runReveal();
+
+function animateProgressBars(){
+  document.querySelectorAll(".progress-fill").forEach(function(b){ b.style.width = b.dataset.pct+"%"; });
+}
+
+function toggleFaq(el){
+  var item = el.closest(".faq-item");
+  var ans = item.querySelector(".faq-a");
+  var arr = el.querySelector(".faq-arrow");
+  var wasOpen = el.classList.contains("open");
+  document.querySelectorAll(".faq-q.open").forEach(function(q){
+    q.classList.remove("open");
+    q.querySelector(".faq-arrow").classList.remove("open");
+    q.closest(".faq-item").querySelector(".faq-a").classList.remove("open");
+  });
+  if(!wasOpen){ el.classList.add("open"); arr.classList.add("open"); ans.classList.add("open"); }
+}
+
+function submitForm(e){
+  e.preventDefault();
+  e.target.querySelectorAll("input,select").forEach(function(f){ f.value=""; });
+  var s = document.getElementById("form-success");
+  s.classList.add("show");
+  setTimeout(function(){ s.classList.remove("show"); }, 6000);
+}
+
+showPage("home");
+
+</script>
+</body>
+</html>
